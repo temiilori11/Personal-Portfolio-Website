@@ -1,285 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temitope Ilori – Cybersecurity & Digital Forensics</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temitope Ilori</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f5;
+    --ink: #16140f;
+    --ink-soft: #6b6355;
+    --rule: #d8d2c4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  body {
+    font-family: 'EB Garamond', serif;
+    position: relative;
+  }
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 40px 32px;
+  }
 
-    <style>
-        :root {
-            --primary: #1d4ed8;
-            --primary-light: #2563eb;
-            --secondary: #475569;
-            --dark: #0f172a;
-            --light: #ffffff;
-            --gray: #64748b;
-            --radius: 10px;
-            --shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        header {
-            width: 100%;
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            position: fixed;
-            top: 0; left: 0;
-            z-index: 1000;
-        }
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-        }
+  .corner {
+    position: absolute;
+    top: 44px;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .corner .sub {
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+  }
+  .corner.left { left: 48px; }
+  .corner.right { right: 48px; text-align: right; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; }
 
-        .hero {
-            padding: 160px 20px 120px;
-            background: linear-gradient(135deg, #eef2ff, #dbeafe);
-        }
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            gap: 50px;
-            grid-template-columns: 1fr 0.8fr;
-            align-items: center;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--secondary);
-            margin-top: 15px;
-            max-width: 600px;
-        }
-        .btn {
-            padding: 12px 22px;
-            border-radius: var(--radius);
-            background: var(--primary);
-            color: white;
-            display: inline-block;
-            text-decoration: none;
-            margin-top: 25px;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-        }
+  .center {
+    text-align: center;
+    max-width: 800px;
+  }
 
-        .profile-img {
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: 700;
-            color: white;
-            background: var(--primary);
-            margin: auto;
-            box-shadow: var(--shadow);
-        }
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
 
-        section { padding: 90px 20px; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-        .section-title h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-        .card-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            gap: 30px;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        }
-        .card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            border: 1px solid #e2e8f0;
-        }
-        .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .skills-list, .project-list, .cert-list { list-style: none; padding-left: 0; }
-        .skills-list li, .project-list li {
-            background: #f1f5f9;
-            margin-bottom: 8px;
-            padding: 10px 15px;
-            border-radius: var(--radius);
-        }
+  .rule {
+    width: 100%;
+    max-width: 340px;
+    margin: 26px auto;
+    border-top: 1.5px double var(--ink);
+    height: 0;
+  }
 
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-        footer p { text-align: center; }
-    </style>
+  .contact {
+    font-size: 1.02rem;
+    letter-spacing: 0.02em;
+  }
+  .contact a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .contact a:hover { border-bottom-color: var(--ink); }
+
+  .tagline {
+    margin-top: 60px;
+    font-size: 0.98rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .tagline .sep { color: var(--rule); margin: 0 12px; }
+  .tagline strong { font-weight: 600; }
+  .tagline a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .tagline a:hover { border-bottom-color: var(--ink); }
+
+  .watermark {
+    position: absolute;
+    bottom: 32px;
+    right: 40px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+  }
+
+  .resume-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 32px 90px;
+    text-align: center;
+  }
+  .resume-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .resume-embed {
+    width: 100%;
+    height: 85vh;
+    border: 1px solid var(--rule);
+    background: #fff;
+  }
+  .resume-fallback {
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .resume-fallback a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+  }
+  .resume-fallback a:hover { border-bottom-color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .corner { position: static; text-align: center; margin-bottom: 18px; }
+    .corner.right { text-align: center; }
+    .hero { justify-content: flex-start; padding-top: 70px; }
+    .tagline { line-height: 1.9; }
+    .tagline .sep { display: none; }
+    .tagline span { display: block; }
+    .watermark { position: static; margin-top: 50px; }
+    .resume-embed { height: 70vh; }
+  }
+</style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <div class="logo">Temitope Ilori</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#certs">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+  <div class="hero">
+  <div class="corner left">
+    Dublin, Ireland
+    <div class="sub">087 120 0528</div>
+  </div>
 
-<section id="home" class="hero">
-    <div class="hero-container">
-        <div>
-            <h1>Cybersecurity & Digital Forensics Student</h1>
-            <p>I'm Temitope Ilori — a dedicated Digital Forensics & Cybersecurity student with hands-on experience in SOC analysis, threat detection, incident response, and forensic investigation.
-                Passionate about defending systems and uncovering evidence with industry tools like Splunk, Autopsy, Chainsaw, Python, and SIEM workflows. </p>
-            <a class="btn" href="#contact">Contact Me</a>
-        </div>
-        <div>
-            <div class="profile-img">TI</div>
-        </div>
-    </div>
-</section>
+  <div class="corner right">
+    Technological University Dublin
+    <div class="sub" style="font-family: 'EB Garamond', serif; font-weight: 400;">Computing — Digital Forensics &amp; Cyber Security</div>
+  </div>
 
-<section id="about">
-    <div class="section-title">
-        <h2>About Me</h2>
-    </div>
-    <div style="max-width: 900px; margin: auto; font-size: 1.05rem; color: var(--secondary);">
-        <p>I am a Cybersecurity & Digital Forensics student at Technological University Dublin. My coursework and projects have given me hands-on experience in SOC monitoring, threat detection, digital forensics, Python scripting, SQL investigation, Linux exploration, and SIEM workflows. </p>
-        <p>I've completed professional certifications from Google, Cisco, Splunk, and IBM, strengthening my skills in intrusion detection, endpoint security, incident response, and forensic techniques. I enjoy solving technical challenges, analyzing evidence, and building tools that support investigations and blue-team defence strategies.</p>
-    </div>
-</section>
+  <div class="center">
+    <div class="name">Temitope Ilori</div>
+    <div class="rule"></div>
+    <div class="contact"><a href="mailto:temiilori67@gmail.com">temiilori67@gmail.com</a></div>
 
-<section id="skills">
-    <div class="section-title"><h2>Technical Skills</h2></div>
-    <div class="card-grid">
-        <div class="card">
-            <h3>Cybersecurity</h3>
-            <ul class="skills-list">
-                <li>Blue Team Operations</li>
-                <li>SOC Monitoring</li>
-                <li>Threat Detection</li>
-                <li>Incident Response</li>
-                <li>Alert Triage</li>
-                <li>Malware Identification</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Forensics</h3>
-            <ul class="skills-list">
-                <li>Digital Forensics</li>
-                <li>Evidence Analysis</li>
-                <li>Autopsy & Chainsaw</li>
-                <li>USB Artifact Analysis</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Programming & Systems</h3>
-            <ul class="skills-list">
-                <li>Python (Automation & Forensics)</li>
-                <li>SQL</li>
-                <li>Linux (Ubuntu)</li>
-                <li>Windows System Analysis</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Tools</h3>
-            <ul class="skills-list">
-                <li>Splunk (SIEM)</li>
-                <li>Git & GitHub</li>
-                <li>Wireshark</li>
-                <li>Linux CLI</li>
-            </ul>
-        </div>
+    <div class="tagline">
+      <span>Dublin, IE / Galway, IE</span><span class="sep">|</span>
+      <span>Incoming <strong>Security Operations Intern</strong> at Genesys</span><span class="sep">|</span>
+      <span><a href="https://github.com/temiilori11" target="_blank" rel="noopener">GitHub</a></span><span class="sep">|</span>
+      <span><a href="https://www.linkedin.com/in/temitope-ilori-1930082aa" target="_blank" rel="noopener">LinkedIn</a></span><span class="sep">|</span>
+      <span><a href="Temitope_Ilori_CV_2026.pdf" target="_blank" rel="noopener"><strong>Resume</strong></a></span>
     </div>
-</section>
+  </div>
+  </div>
 
-<section id="projects">
-    <div class="section-title"><h2>Projects</h2></div>
-    <div class="card-grid">
-        <div class="card">
-            <h3>Splunk SSH Brute-Force Detection</h3>
-            <p>Investigated brute-force attack patterns, analyzed authentication logs, identified compromised accounts, and documented findings in a complete incident report.</p>
-        </div>
-        <div class="card">
-            <h3>Windows USB Forensic Investigation</h3>
-            <p>Performed artifact recovery and timeline reconstruction using Autopsy & Chainsaw to determine USB activity and file access patterns.</p>
-        </div>
-        <div class="card">
-            <h3>File Metadata & Hashing Analyzer (Python)</h3>
-            <p>Developed a Python tool to extract file metadata, generate SHA-256 hashes, and analyze timestamps for forensic integrity checks.</p>
-        </div>
-        <div class="card">
-            <h3>Hospital SQL Database System</h3>
-            <p>Built a structured SQL database for patient record management, including entity-relationship modeling and advanced queries.</p>
-        </div>
+  <div class="resume-section">
+    <div class="resume-heading">Resume</div>
+    <div class="rule" style="margin: 14px auto 30px;"></div>
+    <embed src="Temitope_Ilori_CV_2026.pdf" type="application/pdf" class="resume-embed" />
+    <div class="resume-fallback">
+      Can't see the preview above? <a href="Temitope_Ilori_CV_2026.pdf" target="_blank" rel="noopener">Open the PDF directly</a>.
     </div>
-</section>
-
-<section id="certs">
-    <div class="section-title"><h2>Certifications</h2></div>
-    <div class="card-grid">
-        <div class="card"><h3>Google Cybersecurity Professional Certificate</h3></div>
-        <div class="card"><h3>Cisco – Introduction to Cybersecurity</h3></div>
-        <div class="card"><h3>Cisco – Endpoint Security</h3></div>
-        <div class="card"><h3>Splunk – Introduction to Splunk</h3></div>
-        <div class="card"><h3>IBM – Incident Response & Digital Forensics</h3></div>
-    </div>
-</section>
-
-<section id="contact">
-    <div class="section-title"><h2>Contact</h2></div>
-    <div style="max-width: 600px; margin: auto; text-align: center;">
-        <p>Email: <strong>temiilori67@gmail.com</strong></p>
-        <p>Phone: <strong>087 120 0528</strong></p>
-        <p>Location: Dublin, Ireland</p>
-        <p>
-            <a href="https://www.linkedin.com/in/temitope-ilori-1930082aa" class="btn">LinkedIn</a>
-            <a href="https://github.com/temiilori11" class="btn" style="background: var(--secondary);">GitHub</a>
-        </p>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2025 Temitope Ilori. All Rights Reserved.</p>
-</footer>
+  </div>
 
 </body>
 </html>
